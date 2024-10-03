@@ -12,14 +12,19 @@ import taskByNumRoutes from './src/routes/taskbynum.js';
 import deleteTaskRoutes from './src/routes/deletetask.js'; 
 import notificationRoutes from './src/routes/notification.js';
 import sendEmailRoutes from './src/routes/sendemail.js';
-
+import path from 'path';
 
 
 const app = express();
 
 app.use(cors({ origin: '*' }));
 app.use(bodyParser.json());
+app.use(express.static(path.join(path.resolve(), 'dist')));
 
+// Serve the React app for any non-API route
+app.get('*', (req, res) => {
+  res.sendFile(path.join(path.resolve(), 'dist', 'index.html'));
+});
 // Use the auth routes
 app.use('/auth', authRoutes);
 
