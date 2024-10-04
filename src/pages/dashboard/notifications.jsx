@@ -15,7 +15,7 @@ export function Notifications() {
   useEffect(() => {
     const fetchTasksForTomorrow = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/notifications/test-tasks-tomorrow', {
+        const response = await axios.get('https://toptachesapi.onrender.com/notifications/test-tasks-tomorrow', {
           headers: { usr: localStorage.getItem('loggedInUser') }
         });
         if (response.data.success) {
