@@ -40,7 +40,7 @@ export function Tables() {
     const fetchTasks = async () => {
       try {
         const USR = localStorage.getItem("loggedInUser");
-        const response = await axios.get("http://localhost:3000/tasks/tasksall", {
+        const response = await axios.get("https://toptachesapi.onrender.com/tasks/tasksall", {
           headers: { usr: USR },
         });
 
@@ -92,7 +92,7 @@ export function Tables() {
   // Open dialog handlers
   const handleOpenViewDialog = async (task) => {
     try {
-      const response = await axios.get(`http://localhost:3000/tasks/taskbynum/${task.TSKNUM}`, {
+      const response = await axios.get(`https://toptachesapi.onrender.com/tasks/taskbynum/${task.TSKNUM}`, {
         headers: { usr: localStorage.getItem("loggedInUser") },
       });
       console.log("API Response:", response.data); // Log the API response
@@ -109,7 +109,7 @@ export function Tables() {
 
   const handleOpenEditDialog = async (task) => {
     try {
-      const response = await axios.get(`http://localhost:3000/tasks/taskbynum/${task.TSKNUM}`, {
+      const response = await axios.get(`https://toptachesapi.onrender.com/tasks/taskbynum/${task.TSKNUM}`, {
         headers: { usr: localStorage.getItem("loggedInUser") },
       });
 
@@ -183,7 +183,7 @@ export function Tables() {
   
     try {
       console.log("Sending data to backend:", selectedTask);
-      const response = await axios.put(`http://localhost:3000/tasks/updatetask/${selectedTask.TSKNUM}`, selectedTask, {
+      const response = await axios.put(`https://toptachesapi.onrender.com/tasks/updatetask/${selectedTask.TSKNUM}`, selectedTask, {
         headers: { usr: localStorage.getItem("loggedInUser") },
       });
   
@@ -221,7 +221,7 @@ export function Tables() {
     }
   
     try {
-      const response = await axios.delete(`http://localhost:3000/tasks/${selectedTask.TSKNUM}`);
+      const response = await axios.delete(`https://toptachesapi.onrender.com/tasks/${selectedTask.TSKNUM}`);
       if (response.data.success) {
         console.log('Task deleted successfully');
         setOpenDeleteDialog(false);
