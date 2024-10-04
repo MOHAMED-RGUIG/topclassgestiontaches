@@ -40,7 +40,7 @@ export function Home() {
     const fetchTasks = async () => {
       try {
         const USR = localStorage.getItem("loggedInUser");
-        const response = await axios.get("http://localhost:3000/tasks/tasksall", {
+        const response = await axios.get("https://toptachesapi.onrender.com/tasks/tasksall", {
           headers: { usr: USR },
         });
 
@@ -223,7 +223,7 @@ export function Home() {
   
   const handleOpenViewDialog = async (task) => {
     try {
-      const response = await axios.get(`http://localhost:3000/tasks/taskbynum/${task.TSKNUM}`, {
+      const response = await axios.get(`https://toptachesapi.onrender.com/tasks/taskbynum/${task.TSKNUM}`, {
         headers: { usr: localStorage.getItem("loggedInUser") },
       });
       console.log("API Response:", response.data); // Log the API response
@@ -240,7 +240,7 @@ export function Home() {
 
   const handleOpenEditDialog = async (task) => {
     try {
-      const response = await axios.get(`http://localhost:3000/tasks/taskbynum/${task.TSKNUM}`, {
+      const response = await axios.get(`https://toptachesapi.onrender.com/tasks/taskbynum/${task.TSKNUM}`, {
         headers: { usr: localStorage.getItem("loggedInUser") },
       });
 
@@ -311,7 +311,7 @@ export function Home() {
     }
   
     try {
-      const response = await axios.put(`http://localhost:3000/tasks/updatetask/${selectedTask.TSKNUM}`, selectedTask, {
+      const response = await axios.put(`https://toptachesapi.onrender.com/tasks/updatetask/${selectedTask.TSKNUM}`, selectedTask, {
         headers: { usr: localStorage.getItem("loggedInUser") },
       });
   
@@ -348,7 +348,7 @@ export function Home() {
     }
   
     try {
-      const response = await axios.delete(`http://localhost:3000/tasks/${selectedTask.TSKNUM}`);
+      const response = await axios.delete(`https://toptachesapi.onrender.com/tasks/${selectedTask.TSKNUM}`);
       if (response.data.success) {
         alert('Task deleted successfully');
         setOpenDeleteDialog(false);
