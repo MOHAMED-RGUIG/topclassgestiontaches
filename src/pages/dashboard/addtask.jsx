@@ -56,7 +56,7 @@ export function AddTask() {
 
     try {
       // Send data to the backend using a POST request
-      const response = await axios.post("https://toptachesapi.onrender.com/addtask/tasks", newTask, {
+      const response = await axios.post("https://toptachesapi3.onrender.com/addtask/tasks", newTask, {
         headers: {
           usr: localStorage.getItem("loggedInUser"), // Assuming user is stored in localStorage
         },
