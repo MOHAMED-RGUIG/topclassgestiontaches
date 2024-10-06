@@ -49,8 +49,8 @@ export function Profile() {
       }
 
       try {
-        console.log(`Fetching user details from: https://toptachesapi.onrender.com/user/getUserDetails/${USR}`);
-        const response = await axios.get(`https://toptachesapi.onrender.com/user/getUserDetails/${USR}`);
+        console.log(`Fetching user details from: https://toptachesapi3.onrender.com/user/getUserDetails/${USR}`);
+        const response = await axios.get(`https://toptachesapi3.onrender.com/user/getUserDetails/${USR}`);
         if (response.data.success) {
           const userData = response.data.data;
           setProfile({
@@ -113,7 +113,7 @@ export function Profile() {
         MotDePasse: formValues.password === "**********" ? profile.password : formValues.password, // Handle hidden password case
       };
 
-      const response = await axios.put(`https://toptachesapi.onrender.com/updateuser/updateUser/${USR}`, updatedUser);
+      const response = await axios.put(`https://toptachesapi3.onrender.com/updateuser/updateUser/${USR}`, updatedUser);
 
       if (response.data.success) {
         setProfile({
