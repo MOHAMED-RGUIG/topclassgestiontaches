@@ -53,7 +53,8 @@ export function SignIn() {
             variant="h3" 
             color="blue-gray" 
             className="text-4xl font-poppins font-bold mb-4">
-            Bienvenu chez nous!
+            Bienvenu chez nous ! 
+          
           </Typography>
         </div>
         <form className="mt-8 mb-2 mx-auto w-80 max-w-screen-lg lg:w-1/2" onSubmit={handleLogin}>
