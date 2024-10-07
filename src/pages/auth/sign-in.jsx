@@ -21,23 +21,32 @@ export function SignIn() {
     setShowPassword(!showPassword);
   };
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post('https://toptachesapi3.onrender.com/auth/login', {
-        USR: username,
-        MotDePasse: password,
-      });
+ const handleLogin = async (e) => {
+  e.preventDefault();
+  try {
+    const response = await axios.post('https://toptachesapi3.onrender.com/auth/login', {
+      USR: username,
+      MotDePasse: password,
+    });
+    
+    if (response.data.success) {
+      // Store currentUser object in localStorage
+      const currentUser = {
+        EMAILUSR: response.data.data.EMAILUSR,
+        ID: response.data.data.ID,
+        NOMUSR: response.data.data.NOMUSR,
+        TELEP: response.data.data.TELEP
+      };
+      localStorage.setItem("currentUser", JSON.stringify(currentUser)); // Save it as a string
       
-      if (response.data.success) {
-        localStorage.setItem("loggedInUser", response.data.data.USR);
-        // Redirect to dashboard
-        navigate('/dashboard/home');
-      }
-    } catch (error) {
-      setErrorMessage('Nom d\'utilisateur ou mot de passe incorrect');
+      // Redirect to dashboard
+      navigate('/dashboard/home');
     }
-  };
+  } catch (error) {
+    setErrorMessage('Nom d\'utilisateur ou mot de passe incorrect');
+  }
+};
+
 
   return (
     <section className="m-8 flex gap-4">
